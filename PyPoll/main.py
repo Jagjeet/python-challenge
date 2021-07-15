@@ -25,13 +25,15 @@ with open(csvpath) as csvfile:
         #The total number of votes cast
         total_votes += 1
 
-        if candidate not in candidate_dict.keys():
+        if candidate in candidate_dict.keys():
+            #The total number of votes each candidate won
+            candidate_dict[candidate] += 1
+        else:
+            #A complete list of candidates who received votes
             candidate_dict[candidate] = 1
 
     #REVISIT - calculate the following
-    #A complete list of candidates who received votes
     #The percentage of votes each candidate won
-    #The total number of votes each candidate won
     #The winner of the election based on popular vote.
 
     # Write out to analysis.txt
@@ -42,7 +44,7 @@ with open(csvpath) as csvfile:
         f.write(SEPARATOR)
         #REVISIT - Add actual calculations and output here
         for candidate in candidate_dict:
-            f.write(f"{candidate}: \n")
+            f.write(f"{candidate}: ({candidate_dict[candidate]})\n")
         #Khan: 63.000% (2218231)
         #Correy: 20.000% (704200)
         #Li: 14.000% (492940)
