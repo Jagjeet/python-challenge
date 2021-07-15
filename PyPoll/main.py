@@ -36,24 +36,24 @@ with open(csvpath) as csvfile:
 
     # Write out to analysis.txt
     with open(analysis_path, 'w+') as f:
-      f.write('Election Results\n')
-      f.write(SEPARATOR)
-      f.write(f"Total Votes: {total_votes}\n")
-      f.write(SEPARATOR)
-      #REVISIT - Add actual calculations and output here
-      for candidate in candidate_dict:
-          f.write(f"{candidate}: \n")
-      #Khan: 63.000% (2218231)
-      #Correy: 20.000% (704200)
-      #Li: 14.000% (492940)
-      #O'Tooley: 3.000% (105630)
-      f.write(SEPARATOR)
-      #REVISIT - Add actual calculations and output here
-      #Winner: Khan
-      f.write(SEPARATOR)
+        f.write('Election Results\n')
+        f.write(SEPARATOR)
+        f.write(f"Total Votes: {total_votes}\n")
+        f.write(SEPARATOR)
+        #REVISIT - Add actual calculations and output here
+        for candidate in candidate_dict:
+            f.write(f"{candidate}: \n")
+        #Khan: 63.000% (2218231)
+        #Correy: 20.000% (704200)
+        #Li: 14.000% (492940)
+        #O'Tooley: 3.000% (105630)
+        f.write(SEPARATOR)
+        #REVISIT - Add actual calculations and output here
+        #Winner: Khan
+        f.write(SEPARATOR)
 
-      #print out analysis
+    #print out analysis
     with open(analysis_path) as f:
-      lines = f.readlines()
-      for line in lines:
-        print(line, end='')
+        lines = f.readlines()
+        for line in lines:
+            print(line, end='')
