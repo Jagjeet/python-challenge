@@ -27,15 +27,23 @@ The PyBank script can be ran from the PyBank directory using the command `python
 
 ## PyPoll
 
-TBD
+PyPoll analyzed CSV data found in `election_data.csv` containing columns for the `VoterID`, `County` and `Candidate` The script generates the following information:
+
+* The total number of votes cast
+* A complete list of candidates who received votes
+* The percentage of votes each candidate won
+* The total number of votes each candidate won
+* The winner of the election based on popular vote.
 
 ### PyPoll Usage
 
-TBD
+The PyPoll script can be ran from the PyPoll directory using the command `python main.py`. It will output a text file to the analysis directory and to standard output.
 
 ### PyPoll Known Issues
 
-TBD
+* Currently ties are not handled well. The program will simply print a message and exit
+* While it was not a requirement, it would be nice to take an input and outfile file as commandline arguments.
+
 ## References
 
 The PyBank and PyPoll analyses made use of the following concepts and links:
@@ -57,3 +65,7 @@ The PyBank and PyPoll analyses made use of the following concepts and links:
 ### Fixed Digits
 
 * https://stackoverflow.com/questions/45310254/fixed-digits-after-decimal-with-f-strings
+
+### Destructuring Assignment
+
+* https://riptutorial.com/python/example/14981/destructuring-assignment
