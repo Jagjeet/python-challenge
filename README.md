@@ -53,3 +53,7 @@ The PyBank and PyPoll analyses made use of the following concepts and links:
 ### Summing values from a dictionary
 
 * https://stackoverflow.com/questions/4880960/how-to-sum-all-the-values-in-a-dictionary
+
+### Fixed Digits
+
+* https://stackoverflow.com/questions/45310254/fixed-digits-after-decimal-with-f-strings
