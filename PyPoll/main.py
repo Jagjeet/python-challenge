@@ -7,10 +7,14 @@ csvpath = os.path.join('.', 'Resources', 'election_data.csv')
 analysis_path = os.path.join('.', 'analysis', 'analysis.txt')
 total_votes = 0
 
+#key = candidate name
+#value = number of votes
+candidate_dict = {}
+
 with open(csvpath) as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
 
-    # Read the header row first (skip this step if there is now header)
+    # Read the header row first (skip this step if there is no header)
     csv_header = next(csvreader)
     # print(f"CSV Header: {csv_header}")
 
@@ -20,6 +24,9 @@ with open(csvpath) as csvfile:
 
         #The total number of votes cast
         total_votes += 1
+
+        if candidate not in candidate_dict.keys():
+            candidate_dict[candidate] = 1
 
     #REVISIT - calculate the following
     #A complete list of candidates who received votes
@@ -34,6 +41,8 @@ with open(csvpath) as csvfile:
       f.write(f"Total Votes: {total_votes}\n")
       f.write(SEPARATOR)
       #REVISIT - Add actual calculations and output here
+      for candidate in candidate_dict:
+          f.write(f"{candidate}: \n")
       #Khan: 63.000% (2218231)
       #Correy: 20.000% (704200)
       #Li: 14.000% (492940)
