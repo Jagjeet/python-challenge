@@ -33,7 +33,6 @@ with open(csvpath) as csvfile:
             candidate_dict[candidate] = 1
 
     #REVISIT - calculate the following
-    #The percentage of votes each candidate won
     #The winner of the election based on popular vote.
 
     # Write out to analysis.txt
@@ -44,7 +43,9 @@ with open(csvpath) as csvfile:
         f.write(SEPARATOR)
         #REVISIT - Add actual calculations and output here
         for candidate in candidate_dict:
-            f.write(f"{candidate}: ({candidate_dict[candidate]})\n")
+            #The percentage of votes each candidate won
+            percentage_votes = (candidate_dict[candidate]* 100)/total_votes
+            f.write(f"{candidate}: {percentage_votes:.3f}% ({candidate_dict[candidate]})\n")
         #Khan: 63.000% (2218231)
         #Correy: 20.000% (704200)
         #Li: 14.000% (492940)
