@@ -2,6 +2,7 @@ import os
 import csv
 
 csvpath = os.path.join('.', 'Resources', 'budget_data.csv')
+analysis_path = os.path.join('.', 'analysis', 'analysis.txt')
 total_months = 0
 total = 0
 count = 0
@@ -59,13 +60,22 @@ with open(csvpath) as csvfile:
         max_decrease_date = date
 
 
-    # REVISIT - Write out to analysis.txt instead of printing out
-    print("Financial Analysis")
-    print("----------------------------")
-    print(f"Total Months: {total_months}")
-    print(f"Total: {total:.2f}")
-    # print(f"Profit Loss Changes: {profit_loss_changes}")
-    print(f"Average Change: {average_profit_loss:.2f}")
-    print(f"Greatest Increase in Profits: {max_increase_date} (${profit_loss_changes[max_increase_date]:.2f})")
-    print(f"Greatest Decrease in Profits: {max_decrease_date} (${profit_loss_changes[max_decrease_date]:.2f})")
+    # Write out to analysis.txt
+    with open(analysis_path, 'w+') as f:
+      f.write('Financial Analysis\n')
+      f.write("----------------------------\n")
+      f.write(f"Total Months: {total_months}\n")
+      f.write(f"Total: {total:.2f}\n")
+      # f.write(f"Profit Loss Changes: {profit_loss_changes}")
+      f.write(f"Average Change: {average_profit_loss:.2f}\n")
+      f.write(f"Greatest Increase in Profits: {max_increase_date} (${profit_loss_changes[max_increase_date]:.2f})\n")
+      f.write(f"Greatest Decrease in Profits: {max_decrease_date} (${profit_loss_changes[max_decrease_date]:.2f})\n")
+
+    #print out analysis
+    with open(analysis_path) as f:
+      lines = f.readlines()
+      for line in lines:
+        print(line, end='')
+
     # REVISIT - Allow user to specify input/output files
+
