@@ -5,6 +5,7 @@ SEPARATOR = '-------------------------\n'
 
 csvpath = os.path.join('.', 'Resources', 'election_data.csv')
 analysis_path = os.path.join('.', 'analysis', 'analysis.txt')
+total_votes = 0
 
 with open(csvpath) as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
@@ -14,15 +15,23 @@ with open(csvpath) as csvfile:
     # print(f"CSV Header: {csv_header}")
 
     # Read each row of data after the header
-    # for index, row in enumerate(csvreader):
-    #     print(row)
+    for index, row in enumerate(csvreader):
+        voter_id, county, candidate = row
+
+        #The total number of votes cast
+        total_votes += 1
+
+    #REVISIT - calculate the following
+    #A complete list of candidates who received votes
+    #The percentage of votes each candidate won
+    #The total number of votes each candidate won
+    #The winner of the election based on popular vote.
 
     # Write out to analysis.txt
     with open(analysis_path, 'w+') as f:
       f.write('Election Results\n')
       f.write(SEPARATOR)
-      #REVISIT - Add total votes
-      f.write(f"Total Votes: \n")
+      f.write(f"Total Votes: {total_votes}\n")
       f.write(SEPARATOR)
       #REVISIT - Add actual calculations and output here
       #Khan: 63.000% (2218231)
