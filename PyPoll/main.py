@@ -32,27 +32,30 @@ with open(csvpath) as csvfile:
             #A complete list of candidates who received votes
             candidate_dict[candidate] = 1
 
-    #REVISIT - calculate the following
-    #The winner of the election based on popular vote.
-
     # Write out to analysis.txt
     with open(analysis_path, 'w+') as f:
+        winner = None
         f.write('Election Results\n')
         f.write(SEPARATOR)
         f.write(f"Total Votes: {total_votes}\n")
         f.write(SEPARATOR)
-        #REVISIT - Add actual calculations and output here
+
+        #Write out for each candidate
         for candidate in candidate_dict:
             #The percentage of votes each candidate won
             percentage_votes = (candidate_dict[candidate]* 100)/total_votes
             f.write(f"{candidate}: {percentage_votes:.3f}% ({candidate_dict[candidate]})\n")
-        #Khan: 63.000% (2218231)
-        #Correy: 20.000% (704200)
-        #Li: 14.000% (492940)
-        #O'Tooley: 3.000% (105630)
+
+            #Calculate winner of the election based on popular vote.
+            if winner == None or candidate_dict[candidate] > candidate_dict[winner]:
+                winner =  candidate
+            #Print an error and exit if we have a tie
+            #REVISIT - Ties could throw an error or be better handled
+            elif candidate_dict[candidate] == candidate_dict[winner]:
+                print('Ties are currently unhandled by the script')
+                exit(1)
         f.write(SEPARATOR)
-        #REVISIT - Add actual calculations and output here
-        #Winner: Khan
+        f.write(f"Winner: {winner}\n")
         f.write(SEPARATOR)
 
     #print out analysis
